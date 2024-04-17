@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {{autor.nombre}}
+    {{autor.fecha_nacimiento}}
+    {{autor.fecha_fallecimiento}}
+
+    <button type="button" class="btn btn-outline-danger">
+        <a href="{% url 'autores:autores_list' %}"> -- Volver al Listado -- </a>
+    </button>
+
+{% endblock content %}

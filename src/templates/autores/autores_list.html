@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Lista de Autores</h2>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha Nacimiento</th>
+        <th scope="col">Fecha Fallecimiento</th>
+        <th scope="col">Frases</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for autor in autores %}
+      <tr>
+        <th scope="row">
+          <a href="{% url 'autores:autor_por_id' autor.id %}">
+            {{autor.id}}
+          </a>
+        </th>
+        <td>{{autor.nombre}}</td>
+        <td>{{autor.fecha_nacimiento}}</td>
+        <td>{{autor.fecha_fallecimiento}}</td>
+        <td>
+          {{autor.frase_set.count}}
+        </td>
+      </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+
+{% endblock content %}
