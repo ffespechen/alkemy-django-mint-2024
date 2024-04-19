@@ -10,6 +10,8 @@ class Autor(models.Model):
     fecha_fallecimiento = models.DateField(null=True, blank=True)
     creado = models.DateTimeField(auto_now_add=True)
     modificado = models.DateTimeField(auto_now=True)
+    activo = models.BooleanField(default=True)
+    foto = models.ImageField(upload_to='autores_img/', default='autor_generico.png')
 
     def __str__(self):
         return F"{self.nombre.upper()}"

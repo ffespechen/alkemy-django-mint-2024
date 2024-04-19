@@ -5,7 +5,7 @@
 
 <div class="alert alert-warning" role="alert">
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <table class="table table-dark table-striped">
             <tr>
@@ -19,6 +19,14 @@
             <tr>
                 <td>Fecha de Fallecimiento</td>
                 <td>{{form.fecha_fallecimiento}}</td>                
+            </tr>
+            <tr>
+                <td>Activo? </td>
+                <td>{{form.activo}}</td>                
+            </tr>
+            <tr>
+                <td>Imagen </td>
+                <td>{{form.foto}}</td>  
             </tr>
         </table>
         <button type="submit" class="btn btn-success">Guardar</button>

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -11,7 +12,9 @@
         <th scope="col">Nombre</th>
         <th scope="col">Fecha Nacimiento</th>
         <th scope="col">Fecha Fallecimiento</th>
+        <th scope="col">Activo</th>
         <th scope="col">Frases</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -19,14 +22,39 @@
       <tr>
         <th scope="row">
           <a href="{% url 'autores:autor_por_id' autor.id %}">
-            {{autor.id}}
+            <img src="{{ autor.foto.url }}" width="50px" />
           </a>
         </th>
         <td>{{autor.nombre}}</td>
         <td>{{autor.fecha_nacimiento}}</td>
         <td>{{autor.fecha_fallecimiento}}</td>
         <td>
-          {{autor.frase_set.count}}
+          {% if autor.activo %}
+            <img src="{% static 'img/verde.png' %}" alt="ACTIVO" width="50px" />
+          {% else %}
+            <img src="{% static 'img/rojo.png' %}" alt="INACTIVO" width="50px" />
+          {% endif %}
+        </td>
+        <td>
+          {% if autor.frase_set.count > 0%}
+            {{autor.frase_set.count}}
+            <a href="{% url 'autores:autor_frases' autor.pk %}">
+              <img src="{% static 'img/citar.png' %}" alt="CITAS" width="50px" />
+            </a>
+          {% endif %}
+        </td>
+        <td>
+          <a href="{% url 'autores:autores_modificar' autor.pk %}">
+           <img src="{% static 'img/editar.png' %}" alt="MODIFICAR" width="50px" />
+          </a>
+
+          <a href="{% url 'autores:autor_cambiar_estado' autor.pk %}">
+            {% if autor.activo %}
+              <img src="{% static 'img/apagar.png' %}" alt="DESACTIVAR" width="50px" />
+            {% else %}
+              <img src="{% static 'img/encender.png' %}" alt="ACTIVAR" width="50px" />
+            {% endif %}
+          </a>
         </td>
       </tr>
         {% endfor %}

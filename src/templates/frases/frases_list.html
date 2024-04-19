@@ -1,11 +1,20 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
     {% for object in lista_de_frases %}
 
     <ul>
-        <li>{{object}}</li>
+        <li>
+            <img src="{% static 'img/cita.png' %}" width="60px" />
+            {{object}} 
+            {% if object.activa %}
+                [-- ACTIVA --]
+            {% else %}
+                [ -- INACTIVA --]
+            {% endif %}
+        </li>
     </ul>
 
     {% endfor %}
