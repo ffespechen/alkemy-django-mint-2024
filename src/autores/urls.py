@@ -5,7 +5,8 @@ from .views import (
     AutorCreateView, 
     AutorUpdateView, 
     autor_cambiar_estado,
-    autor_frases )
+    autor_frases,
+    autores_buscar )
 
 
 app_name = 'autores'
@@ -18,4 +19,5 @@ urlpatterns = [
     path('modificar/<int:pk>/', AutorUpdateView.as_view(), name='autores_modificar'),
     path('cambiar_estado/<int:id>/', autor_cambiar_estado, name='autor_cambiar_estado'),
     path('frases/<int:id>/', autor_frases, name='autor_frases'),
+    path('buscar/', autores_buscar, name='buscar')
 ]

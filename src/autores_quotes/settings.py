@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'autores_prueba',
     'autores',
     'frases',
+    'inicio',
     # De terceros
     
 ]

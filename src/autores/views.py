@@ -47,3 +47,11 @@ def autor_frases(request, id):
     autor = get_object_or_404(Autor, id=id)
     frases = autor.frase_set.all()
     return render(request, 'frases/frases_list.html', {'lista_de_frases': frases})
+
+
+def autores_buscar(request):
+    if request.method == 'POST':
+        a_buscar = request.POST.get('buscar')
+        resultado = Autor.objects.filter(nombre__contains=a_buscar)
+        print(resultado)
+        return redirect("http://localhost:8000/")
